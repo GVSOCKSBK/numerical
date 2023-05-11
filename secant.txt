@@ -1,0 +1,31 @@
+secant[f_, a0_, b0_, n_] := Module[{}, p0 = N[a0];
+
+p1 = N[b0];
+
+If[f[p0] * f[p1] > 0, Print["Secant Method cannot be applied!"];
+
+Return[]];
+
+Print["________________________________________"];
+
+Print["S.No.", " ", "P0", " ", "P1"];
+
+Print["________________________________________"];
+
+i = 1;
+
+While[i <= n, p2 = N[p1 - ((p1 - p0) * f[p1] / (f[p1] - f[p0]))];
+
+Print[i, " ", p0, " ", p1];
+
+i++;
+
+p0 = p1;
+
+p1 = p2 ];
+
+Print["The root of the equation is: ", p2];
+
+Plot[f[x], {x, -3, 3}]
+
+]

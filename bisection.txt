@@ -1,0 +1,28 @@
+bisection[f_,ao_,bo_,n_] := Module[{},a=N[ao];
+
+b=N[bo];
+
+If[f[a]*f[b]>0,
+Print["Bisection method can not be aplied"]
+
+Return[]];
+
+p=(a+b)/2;
+
+i=1;
+
+While[i<=n,
+
+If[f[a]*f[p]>0,b=p,a=p];
+
+Print[i,"      ",a,"       ",b];
+
+i++;
+
+p=(a+b)/2];
+
+Print["root = ",p];
+
+Plot[f[x],{x,-3,3}]
+
+]

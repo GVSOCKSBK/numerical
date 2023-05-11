@@ -1,0 +1,22 @@
+ClearAll["Global`*"]
+A = {{1, 2, 3}, {2, 6, 10}, {3, 14, 28}};
+x = {x1, x2, x3};
+A // MatrixForm
+x // MatrixForm
+b = {{1}, {0}, {-8}};
+b // MatrixForm
+Print["The system of equations is: ",
+MatrixForm[A].MatrixForm[x], "=", MatrixForm[b]
+]
+aug = ArrayFlatten[{{A, b}}];
+aug // MatrixForm
+aug[[2]] = aug[[2]] - 2 aug[[1]];
+aug[[3]] = aug[[3]] - 3 aug[[1]];
+aug // MatrixForm
+aug[[3]] = aug[[3]] - 4 aug[[2]];
+aug // MatrixForm
+upper = Take[aug, 3, 3];
+upper // MatrixForm
+c = Take[aug, 3, -1];
+c // MatrixForm
+Solve[upper.x  c, x]

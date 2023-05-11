@@ -1,0 +1,18 @@
+A = {{2, 1, 1}, { 3, 5, 2}, { 2, 1, 4}};
+X = { x1, x2, x3};
+x = { 0, 0, 0};
+b = { 5, 15, 8};
+Print["*******************************************"]; 
+Print["The general form of the equation is: AX = b"] 
+Print["The system of equations is: ", 
+MatrixForm[A].MatrixForm[X], " = ", MatrixForm[b] 
+];
+l = LowerTriangularize[A, -1];
+u = UpperTriangularize[A, 1]; 
+d = DiagonalMatrix[{ 2, 5, 4}]
+Print["*******************************************"];
+For[k = 1, k <= 15, k++,
+y = Inverse[d + l].(b - u.x);
+x = N[y];
+Print[k, "th approximation solution is: ", MatrixForm[x]] 
+]

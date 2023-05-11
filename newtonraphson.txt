@@ -1,0 +1,11 @@
+newtonraphson[f_, p0_, n_] := Module[{}, p1 = N[p0]; i = 1;
+df[x_] = D[f[x], x];
+Print["_________________________"]; Print["S.No.", " ", "Root"];
+Print["_________________________"];
+While[i <= n, p2 = N[p1 - N[f[p1]] / N[df[p1]]];
+Print[i, " ", p2]; i++; p1 = p2 ];
+Print["Root = ", p2];
+Plot[f[x], {x, 0, 3}] ]
+
+f[x_] := -3 x ^3 + 2 x ^ 2 + 4 x - 2
+newtonraphson[f, 0, 5]

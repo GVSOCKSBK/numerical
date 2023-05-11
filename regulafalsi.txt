@@ -1,0 +1,19 @@
+regulafalsi[f_, a0_, b0_, n_] := Module[{}, a = N[a0]; b = N[b0];
+c = (a * f[b] - b * f[a]) / (f[b] - f[a]);
+k = 0; 
+Print["_________________________________________"];
+Print["S.No.", " ", "C", " ", "F[C]"];
+Print["_________________________________________"];
+While[k < n, If[f[a] * f[c] < 0, b = c, a = c; 
+Print[k, " ", NumberForm[c, 10], " ", NumberForm[f[c], 10] ];
+]; 
+c = (a * f[b] - b * f[a]) / (f[b] - f[a]);
+k = k + 1; 
+];
+Print[" "]; 
+Print["c = ", NumberForm[c, 16]];
+Print["f[c]", NumberForm[f[c], 16]];
+Plot[f[x], {x, -3, 3},PlotLegends -> {f[x]}]
+]
+f[x_] := 2 x ^ 2 - 3 x + 0.5 
+regulafalsi[f, 1, 0, 5]

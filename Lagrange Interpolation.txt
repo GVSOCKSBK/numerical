@@ -1,0 +1,17 @@
+ClearAll["Global`*"]
+points = {{1, 0}, {3, 18}, {4, 48}, {6, 180}, {10, 900}};
+no = Length[points]
+y = points[[All, 1]]
+f = points[[All, 2]]
+lagrange[no_, n_] := Product[
+If[Equal[k, n], 1,
+((x - y[[k]]) / (y[[n]] - y[[k]]))
+],
+{k, 1, no}
+];
+Approx = Expand[
+Simplify[
+Sum[(f[[i]] * lagrange[no, i]), {i, 1, no}]
+]
+]
+Approx /. x -> 5

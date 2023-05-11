@@ -1,0 +1,14 @@
+ClearAll["Global`*"]
+a = Input["Enter the left end limit : "]  //eth 0 aanu
+b = Input["Enter the right end limit : "] //eth 1
+n = Input["Enter the number of sub intervals : "]  //eth 8
+sum = 0;
+h = (b - a) / n;
+f[x] = 1 / (1 + x)
+For[i = 1, i ≤ n - 1, i++,
+sum += N[f[x] /. x -> (a + i * h)]
+]
+sum = N[(2 * sum + (f[x] /. x -> a) + (f[x] /. x -> b)) * h / 2]
+in = Integrate[1 / (1 + x), {x, 0, 1}]
+Print["The value is : ", in]
+Print["Absolute Error : ", Abs[sum - in]]
